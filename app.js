@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-// import router
 const routes = require("./routes/routes");
 
 app.set("view engine", "ejs");
