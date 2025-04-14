@@ -8,3 +8,7 @@ exports.getSignupPage = async (req, res) => {
 exports.getMainPage = async (req, res) => {
   res.render("index", {});
 };
+
+exports.getLoginPage = (req, res) => {
+  res.render("log-in", {});
+};
