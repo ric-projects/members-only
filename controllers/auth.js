@@ -25,7 +25,7 @@ passport.use(
   })
 );
 
-exports.checkLoginInfo = (req, res) => {
+exports.checkLoginInfo = (req, res, next) => {
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/log-in",
