@@ -16,6 +16,13 @@ app.use(
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      maxAge: 60 * 60 * 1000,
+    },
+    store: new (require("connect-pg-simple")(session))({
+      pool: pool,
+      // createTableIfMissing: false,
+    }),
   })
 );
 app.use(passport.session());
@@ -67,11 +74,6 @@ passport.deserializeUser(async (id, done) => {
     done(err);
   }
 });
-
-app.post(
-  "/log-in",
-  passport.authenticate("local", { successRedirect: "/", failureRedirect: "/" })
-);
 
 app.use("/", routes);
 
