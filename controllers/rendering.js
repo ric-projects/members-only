@@ -12,3 +12,7 @@ exports.getMainPage = async (req, res) => {
 exports.getLoginPage = (req, res) => {
   res.render("log-in", {});
 };
+
+exports.getJoinClubPage = (req, res) => {
+  res.render("join-the-club", {});
+};

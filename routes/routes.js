@@ -15,4 +15,7 @@ mainRouter.get("/log-out", auth.logoutUser);
 mainRouter.post("/sign-up", signupController.addNewUser);
 mainRouter.post("/log-in", auth.checkLoginInfo);
 
+mainRouter.get("/join-the-club", renders.getJoinClubPage);
+mainRouter.post("/join-the-club", signupController.changePermissions);
+
 module.exports = mainRouter;

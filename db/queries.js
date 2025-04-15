@@ -34,4 +34,27 @@ async function addNewUser(
   );
 }
 
-module.exports = { getAllMessages, newMessage, delMessage, addNewUser };
+async function changePermissions(user_id, type) {
+  switch (type) {
+    case "club":
+      await pool.query(`UPDATE users SET status=($2) WHERE user_id=($1);`, [
+        user_id,
+        true,
+      ]);
+      return;
+    case "admin":
+      await pool.query(`UPDATE users SET admin=($2) WHERE user_id=($1);`, [
+        user_id,
+        true,
+      ]);
+      break;
+  }
+}
+
+module.exports = {
+  getAllMessages,
+  newMessage,
+  delMessage,
+  addNewUser,
+  changePermissions,
+};

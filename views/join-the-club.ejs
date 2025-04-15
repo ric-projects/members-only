@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join the Club</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <%- include('navbar') %>
+    <h2>Join the Club</h2>
+
+    Hello <%= currentUser.username %>, <% if(currentUser.status === false) {%>
+    <form action="/join-the-club" method="post">
+      <label for="pass">Secret Code:</label>
+      <input type="text" name="pass" id="pass" />
+      <button type="submit">Enter the Club</button>
+    </form>
+    Enter the secret code above to get the correct permissions. <% } else { %>
+    You're currently part of our club, welcome! <% }; %>
+  </body>
+</html>

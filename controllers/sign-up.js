@@ -35,3 +35,10 @@ exports.addNewUser = [
     res.redirect("/");
   },
 ];
+
+exports.changePermissions = async (req, res) => {
+  if (req.body.pass === "cats" && res.locals.currentUser.status === false) {
+    await db.changePermissions(res.locals.currentUser.user_id, "club");
+  }
+  res.redirect("/");
+};
