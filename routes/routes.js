@@ -22,4 +22,6 @@ mainRouter.post("/join-the-club", signupController.changePermissions);
 mainRouter.get("/new-msg", renders.newMessagePage);
 mainRouter.post("/new-msg", messageHandler.postNewMessage);
 
+mainRouter.get("/delmsg/:msgid", messageHandler.delMessage);
+
 module.exports = mainRouter;

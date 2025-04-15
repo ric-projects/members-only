@@ -6,6 +6,8 @@
     <% if(currentUser && currentUser.status===true) { %> Date: <%= e.date %>
     <br />
     Author: <%= e.username %> <br />
+    <% const delAddress = "/delmsg/" + e.msg_id %>
+    <a href="<%= delAddress %>"><button>Delete</button></a>
     <% }}); %>
   </div>
 </body>

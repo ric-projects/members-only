@@ -17,15 +17,15 @@ async function newMessage(title, date, text, author_id) {
 }
 
 async function delMessage(msg_id) {
-  await pool.query(`DELETE FROM messages WHERE id=($1);`, [msg_id]);
+  await pool.query(`DELETE FROM messages WHERE msg_id=($1);`, [msg_id]);
 }
 
 async function addNewUser(
   full_name,
   username,
   password,
-  status = false,
-  admin = false
+  admin = false,
+  status = false
 ) {
   await pool.query(
     `INSERT INTO users (full_name, username, password, status, admin)
@@ -41,7 +41,7 @@ async function changePermissions(user_id, type) {
         user_id,
         true,
       ]);
-      return;
+      break;
     case "admin":
       await pool.query(`UPDATE users SET admin=($2) WHERE user_id=($1);`, [
         user_id,
@@ -49,6 +49,7 @@ async function changePermissions(user_id, type) {
       ]);
       break;
   }
+  return;
 }
 
 async function postNewMsg(title, text, author_id) {
@@ -62,7 +63,7 @@ async function postNewMsg(title, text, author_id) {
 
 async function getAllMessages() {
   const { rows } = await pool.query(
-    `SELECT title, date, text, username FROM messages JOIN users ON author_id=user_id;`
+    `SELECT title, date, text, username, msg_id FROM messages JOIN users ON author_id=user_id;`
   );
   return rows;
 }

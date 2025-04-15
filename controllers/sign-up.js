@@ -31,7 +31,12 @@ exports.addNewUser = [
       return res.status(400).send({ errors: errors.array() });
     }
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    await db.addNewUser(req.body.fullName, req.body.username, hashedPassword);
+    await db.addNewUser(
+      req.body.fullName,
+      req.body.username,
+      hashedPassword,
+      req.body.isAdmin
+    );
     res.redirect("/");
   },
 ];
