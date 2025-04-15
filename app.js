@@ -21,7 +21,8 @@ app.use(
     },
     store: new (require("connect-pg-simple")(session))({
       pool: pool,
-      // createTableIfMissing: false,
+      // can remove once table is created
+      createTableIfMissing: true,
     }),
   })
 );

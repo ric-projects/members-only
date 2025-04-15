@@ -1,4 +1,3 @@
-const pool = require("../db/pool");
 const db = require("../db/queries");
 
 exports.getSignupPage = async (req, res) => {

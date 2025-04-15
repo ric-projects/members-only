@@ -1,4 +1,4 @@
-const pool = require("../db/pool");
+// const pool = require("../db/pool");
 const db = require("../db/queries");
 const bcrypt = require("bcryptjs");
 const { body, validationResult } = require("express-validator");
@@ -27,7 +27,6 @@ exports.addNewUser = [
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      // console.error(errors);
       return res.status(400).send({ errors: errors.array() });
     }
     const hashedPassword = await bcrypt.hash(req.body.password, 10);

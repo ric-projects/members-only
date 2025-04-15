@@ -3,11 +3,14 @@
   <div class="messageWrapper">
     <h4><%= e.title %></h4>
     <%= e.text %> <br />
-    <% if(currentUser && currentUser.status===true) { %> Date: <%= e.date %>
-    <br />
-    Author: <%= e.username %> <br />
-    <% const delAddress = "/delmsg/" + e.msg_id %>
-    <a href="<%= delAddress %>"><button>Delete</button></a>
+    <% if(currentUser && currentUser.status === true) { %> 
+        Date: <%= e.date %>
+        <br />
+        Author: <%= e.username %> <br />
+        <% if(currentUser.admin === true) { %> 
+            <% const delAddress = "/delmsg/" + e.msg_id %>
+            <a href="<%= delAddress %>"><button>Delete</button></a>
+        <% } %> 
     <% }}); %>
   </div>
 </body>
