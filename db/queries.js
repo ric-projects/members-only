@@ -51,10 +51,28 @@ async function changePermissions(user_id, type) {
   }
 }
 
+async function postNewMsg(title, text, author_id) {
+  const date = new Date();
+  await pool.query(
+    `INSERT INTO messages (title, date, text, author_id)
+    VALUES ($1, $2, $3, $4);`,
+    [title, date, text, author_id]
+  );
+}
+
+async function getAllMessages() {
+  const { rows } = await pool.query(
+    `SELECT title, date, text, username FROM messages JOIN users ON author_id=user_id;`
+  );
+  return rows;
+}
+
 module.exports = {
   getAllMessages,
   newMessage,
   delMessage,
   addNewUser,
   changePermissions,
+  postNewMsg,
+  getAllMessages,
 };

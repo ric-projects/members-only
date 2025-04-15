@@ -6,7 +6,8 @@ exports.getSignupPage = async (req, res) => {
 };
 
 exports.getMainPage = async (req, res) => {
-  res.render("index", {});
+  const rows = await db.getAllMessages();
+  res.render("index", { rows });
 };
 
 exports.getLoginPage = (req, res) => {
@@ -15,4 +16,8 @@ exports.getLoginPage = (req, res) => {
 
 exports.getJoinClubPage = (req, res) => {
   res.render("join-the-club", {});
+};
+
+exports.newMessagePage = (req, res) => {
+  res.render("new-msg", {});
 };

@@ -1,0 +1,11 @@
+<body>
+  <% rows.forEach(e => { %>
+  <div class="messageWrapper">
+    <h4><%= e.title %></h4>
+    <%= e.text %> <br />
+    <% if(currentUser && currentUser.status===true) { %> Date: <%= e.date %>
+    <br />
+    Author: <%= e.username %> <br />
+    <% }}); %>
+  </div>
+</body>
