@@ -2,6 +2,7 @@ const passport = require("passport");
 
 exports.checkLoginInfo = passport.authenticate("local", {
   successRedirect: "/",
+  failureMessage: true,
   failureRedirect: "/log-in",
 });
 
